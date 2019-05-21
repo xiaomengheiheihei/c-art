@@ -1,6 +1,6 @@
 {
     "name": "c-art-js-framework",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "scripts": {
         "lint": "eslint --fix --config package.json --ext .js --ext .vue --ignore-path .eslintignore build src",
         "dev:h5": "npm run lint && cross-env NODE_ENV=production UNI_WATCH=true UNI_PLATFORM=h5 node build/build.js",
