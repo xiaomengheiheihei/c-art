@@ -22,7 +22,7 @@
   </c-page>
 </template>
 <style>
-    uni-page {
+    c-page {
         display: block;
         width: 100%;
         height: 100%;

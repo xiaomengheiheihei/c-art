@@ -127,7 +127,7 @@ function beforeEach (to, from, next, routes) {
     /* eslint-disable no-undef */
     if (__PLATFORM__ === 'h5') {
       if (to.meta && to.meta.name) {
-        document.body.className = 'uni-body ' + to.meta.name
+        document.body.className = 'c-body ' + to.meta.name
       }
     }
 

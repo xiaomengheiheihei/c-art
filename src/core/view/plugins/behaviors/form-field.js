@@ -10,21 +10,21 @@ import {
 } from 'uni-mixins'
 
 function created () {
-  this.$dispatch('Form', 'uni-form-group-update', {
+  this.$dispatch('Form', 'c-form-group-update', {
     type: 'add',
     vm: this
   })
 }
 
 function beforeDestroy () {
-  this.$dispatch('Form', 'uni-form-group-update', {
+  this.$dispatch('Form', 'c-form-group-update', {
     type: 'remove',
     vm: this
   })
 }
 
 export default {
-  name: 'uni://form-field',
+  name: 'c://form-field',
   init (options, vm) {
     if (
       !vm.constructor.options.props ||

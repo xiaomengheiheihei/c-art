@@ -222,7 +222,7 @@ export default {
       }
       if (this.$route.path !== url) {
         this.__path__ = this.$route.path
-        uni.switchTab({
+        c.switchTab({
           url
         })
       } else {

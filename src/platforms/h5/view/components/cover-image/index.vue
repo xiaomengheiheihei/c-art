@@ -1,16 +1,16 @@
 <template>
-  <uni-cover-image
+  <c-cover-image
     :src="src"
     v-on="$listeners">
     <div
-      class="uni-cover-image">
+      class="c-cover-image">
       <img
         v-if="src"
         :src="$getRealPath(src)"
         @load="_load"
         @error="_error">
     </div>
-  </uni-cover-image>
+  </c-cover-image>
 </template>
 <script>
 export default {
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style>
-uni-cover-image {
+c-cover-image {
   display: block;
   line-height: 1.2;
   overflow: hidden;
@@ -42,16 +42,16 @@ uni-cover-image {
   pointer-events: auto;
 }
 
-uni-cover-image img {
+c-cover-image img {
   width: 100%;
   height: 100%;
 }
 
-uni-cover-image[hidden] {
+c-cover-image[hidden] {
   display: none;
 }
 
-uni-cover-image .uni-cover-image {
+c-cover-image .c-cover-image {
   width: 100%;
   height: 100%;
   text-overflow: inherit;

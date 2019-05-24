@@ -4,7 +4,7 @@ import {
 } from 'uni-helpers/constants'
 
 export default function getWindowOffset () {
-  if (uni.canIUse('css.var')) {
+  if (c.canIUse('css.var')) {
     const style = document.documentElement.style
     return {
       top: parseInt(style.getPropertyValue('--window-top')) || 0,

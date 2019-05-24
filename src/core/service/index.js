@@ -13,21 +13,21 @@ import baseApi from './api'
 
 import platformApi from 'uni-platform/service/api'
 
-const uni = Object.create(null)
+const c = Object.create(null)
 
 /* eslint-disable no-undef */
-uni.version = __VERSION__
+c.version = __VERSION__
 
 todoApis.forEach(name => {
-  uni[name] = wrapperUnimplemented(name)
+  c[name] = wrapperUnimplemented(name)
 })
 
 Object.keys(baseApi).forEach(name => {
-  uni[name] = promisify(name, wrapper(name, baseApi[name]))
+  c[name] = promisify(name, wrapper(name, baseApi[name]))
 })
 
 Object.keys(platformApi).forEach(name => {
-  uni[name] = promisify(name, wrapper(name, platformApi[name]))
+  c[name] = promisify(name, wrapper(name, platformApi[name]))
 })
 
 export {
@@ -36,4 +36,4 @@ export {
 }
   from './plugins/app'
 
-export default uni
+export default c

@@ -4,7 +4,7 @@
       ref="content"
       :style="modeStyle" />
     <img :src="realImagePath">
-    <v-uni-resize-sensor
+    <v-c-resize-sensor
       v-if="mode === 'widthFix'"
       ref="sensor"
       @resize="_resize" />
@@ -164,7 +164,7 @@ export default {
 }
 </script>
 <style>
-	uni-image {
+	c-image {
 		width: 320px;
 		height: 240px;
 		display: inline-block;
@@ -172,16 +172,16 @@ export default {
 		position: relative;
 	}
 
-	uni-image[hidden] {
+	c-image[hidden] {
 		display: none;
 	}
 
-	uni-image>div {
+	c-image>div {
 		width: 100%;
 		height: 100%;
 	}
 
-	uni-image>img {
+	c-image>img {
 		-webkit-touch-callout: none;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -194,7 +194,7 @@ export default {
 		opacity: 0;
 	}
 
-	uni-image>.uni-image-will-change {
+	c-image>.c-image-will-change {
 		will-change: transform;
 	}
 </style>

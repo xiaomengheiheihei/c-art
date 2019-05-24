@@ -31,7 +31,7 @@ export default {
         let target = $event.target
         const $el = this.$el
         for (; target && target !== $el; target = target.parentNode) {
-          if (target.tagName && target.tagName.indexOf('UNI-') === 0) {
+          if (target.tagName && target.tagName.indexOf('c-') === 0) {
             break
           }
         }

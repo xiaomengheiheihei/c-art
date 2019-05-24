@@ -1,13 +1,13 @@
 <template>
-  <uni-cover-view
+  <c-cover-view
     :scroll-top="scrollTop"
     v-on="$listeners">
     <div
       ref="content"
-      class="uni-cover-view">
+      class="c-cover-view">
       <slot/>
     </div>
-  </uni-cover-view>
+  </c-cover-view>
 </template>
 <script>
 export default {
@@ -36,7 +36,7 @@ export default {
     _upx2pxNum (val) {
       if (/\d+[ur]px$/i.test(val)) {
         val.replace(/\d+[ur]px$/i, text => {
-          return uni.upx2px(parseFloat(text))
+          return c.upx2px(parseFloat(text))
         })
       }
       return parseFloat(val) || 0
@@ -45,7 +45,7 @@ export default {
 }
 </script>
 <style>
-uni-cover-view {
+c-cover-view {
   display: block;
   line-height: 1.2;
   overflow: hidden;
@@ -53,11 +53,11 @@ uni-cover-view {
   pointer-events: auto;
 }
 
-uni-cover-view[hidden] {
+c-cover-view[hidden] {
   display: none;
 }
 
-uni-cover-view .uni-cover-view {
+c-cover-view .c-cover-view {
   width: 100%;
   height: 100%;
   text-overflow: inherit;

@@ -73,7 +73,7 @@ export default {
     },
     hideTabBar (newVal, oldVal) {
       // TODO 不支持 css 变量时
-      if (uni.canIUse('css.var')) {
+      if (c.canIUse('css.var')) {
         const windowBottom = !newVal ? (TABBAR_HEIGHT + 'px') : '0px'
         document.documentElement.style.setProperty('--window-bottom', windowBottom)
         console.debug(`uni.${windowBottom ? 'showTabBar' : 'hideTabBar'}：--window-bottom=${windowBottom}`)
@@ -83,7 +83,7 @@ export default {
     }
   },
   created () {
-    if (uni.canIUse('css.var')) {
+    if (c.canIUse('css.var')) {
       document.documentElement.style.setProperty('--status-bar-height', '0px')
     }
   },

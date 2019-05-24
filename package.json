@@ -64,7 +64,7 @@
             "getApp": true,
             "getCurrentPages": true,
             "plus": true,
-            "uni": true,
+            "c": true,
             "Vue": true,
             "wx": true,
             "my": true,

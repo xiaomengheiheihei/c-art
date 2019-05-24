@@ -9,7 +9,7 @@ export function checkDeviceWidth () {
     platform,
     pixelRatio,
     windowWidth
-  } = uni.getSystemInfoSync()
+  } = c.getSystemInfoSync()
 
   deviceWidth = windowWidth
   deviceDPR = pixelRatio

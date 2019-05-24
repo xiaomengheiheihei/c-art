@@ -31,10 +31,10 @@ canIUses.forEach(canIUseApi => {
   }
 })
 
-let uni = {}
+let c = {}
 
 if (typeof Proxy !== 'undefined') {
-  uni = new Proxy({}, {
+  c = new Proxy({}, {
     get (target, name) {
       if (name === 'upx2px') {
         return upx2px
@@ -57,24 +57,24 @@ if (typeof Proxy !== 'undefined') {
     }
   })
 } else {
-  uni.upx2px = upx2px
+  c.upx2px = upx2px
 
   if (__PLATFORM__ !== 'app-plus') {
     Object.keys(todoApi).forEach(name => {
-      uni[name] = promisify(name, todoApi[name])
+      c[name] = promisify(name, todoApi[name])
     })
     Object.keys(extraApi).forEach(name => {
-      uni[name] = promisify(name, todoApi[name])
+      c[name] = promisify(name, todoApi[name])
     })
   }
 
   Object.keys(api).forEach(name => {
-    uni[name] = promisify(name, api[name])
+    c[name] = promisify(name, api[name])
   })
 
   Object.keys(__GLOBAL__).forEach(name => {
     if (hasOwn(__GLOBAL__, name) || hasOwn(protocols, name)) {
-      uni[name] = promisify(name, wrapper(name, __GLOBAL__[name]))
+      c[name] = promisify(name, wrapper(name, __GLOBAL__[name]))
     }
   })
 }
@@ -83,4 +83,4 @@ export * from './wrapper/create-app'
 export * from './wrapper/create-page'
 export * from './wrapper/create-component'
 
-export default uni
+export default c

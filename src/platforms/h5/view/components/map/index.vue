@@ -1,12 +1,12 @@
 <template>
-  <uni-map :id="id">
+  <c-map :id="id">
     <div
       ref="map"
       style="width: 100%; height: 100%; position: relative; overflow: hidden;" />
     <div style="position: absolute; top: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none;">
       <slot />
     </div>
-  </uni-map>
+  </c-map>
 </template>
 
 <script>
@@ -682,7 +682,7 @@ export default {
       if (location) {
         this.removeLocation()
       }
-      uni.getLocation({
+      c.getLocation({
         type: 'gcj02',
         success: (res) => {
           if (location !== this._location) {
@@ -700,7 +700,7 @@ export default {
           })
           this._location = location
           refreshLocation()
-          uni.onCompassChange(function (res) {
+          c.onCompassChange(function (res) {
             location.setRotation(res.direction)
           })
         },
@@ -715,7 +715,7 @@ export default {
           return
         }
         setTimeout(() => {
-          uni.getLocation({
+          c.getLocation({
             type: 'gcj02',
             success: (res) => {
               var locationPosition = self._locationPosition = new maps.LatLng(res.latitude, res.longitude)
@@ -737,7 +737,7 @@ export default {
         location.setMap(null)
         this._location = null
         this._locationPosition = null
-        uni.stopCompass()
+        c.stopCompass()
       }
     },
     fitBounds (points, cb) {
@@ -895,14 +895,14 @@ export default {
 </script>
 
 <style>
-	uni-map {
+	c-map {
 		position: relative;
 		width: 300px;
 		height: 150px;
 		display: block;
 	}
 
-	uni-map[hidden] {
+	c-map[hidden] {
 		display: none;
 	}
 </style>

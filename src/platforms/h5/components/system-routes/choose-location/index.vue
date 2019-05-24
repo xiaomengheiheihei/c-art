@@ -1,5 +1,5 @@
 <template>
-  <div class="uni-system-choose-location">
+  <div class="c-system-choose-location">
     <system-header
       :confirm="!!data"
       @back="_back"
@@ -58,7 +58,7 @@ export default {
 }
 </script>
 <style>
-	.uni-system-choose-location {
+	.c-system-choose-location {
 		display: block;
 		position: fixed;
 		left: 0;

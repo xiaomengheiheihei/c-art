@@ -34,7 +34,7 @@ export function normalizeDataset (dataset = {}) {
 export function upx2px (str) {
   str = str + ''
   if (str.indexOf('upx') !== -1) { // upx转换
-    return uni.upx2px(parseInt(str) || 0)
+    return c.upx2px(parseInt(str) || 0)
   }
   return parseInt(str) || 0
 }

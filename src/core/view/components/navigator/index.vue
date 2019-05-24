@@ -65,27 +65,27 @@ export default {
 
       switch (this.openType) {
         case 'navigate':
-          uni.navigateTo({
+          c.navigateTo({
             url: this.url
           })
           break
         case 'redirect':
-          uni.redirectTo({
+          c.redirectTo({
             url: this.url
           })
           break
         case 'switchTab':
-          uni.switchTab({
+          c.switchTab({
             url: this.url
           })
           break
         case 'reLaunch':
-          uni.reLaunch({
+          c.reLaunch({
             url: this.url
           })
           break
         case 'navigateBack':
-          uni.navigateBack({
+          c.navigateBack({
             url: this.delta
           })
           break
@@ -102,13 +102,13 @@ export default {
     opacity: 0.7;
   }
 
-  uni-navigator {
+  c-navigator {
     height: auto;
     width: auto;
     display: block;
   }
 
-  uni-navigator[hidden] {
+  c-navigator[hidden] {
     display: none;
   }
 </style>

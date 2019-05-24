@@ -15,7 +15,7 @@ function onResize () {
       windowHeight,
       screenWidth,
       screenHeight
-    } = uni.getSystemInfoSync()
+    } = c.getSystemInfoSync()
     var landscape = Math.abs(window.orientation) === 90
     var deviceOrientation = landscape ? 'landscape' : 'portrait'
 

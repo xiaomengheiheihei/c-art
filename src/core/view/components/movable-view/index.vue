@@ -225,7 +225,7 @@ export default {
   methods: {
     _getPx (val) {
       if (/\d+[ur]px$/i.test(val)) {
-        return uni.upx2px(parseFloat(val))
+        return c.upx2px(parseFloat(val))
       }
       return Number(val) || 0
     },

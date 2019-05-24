@@ -7,14 +7,14 @@ export function setStorage ({
     data: data
   }
   localStorage.setItem(key, JSON.stringify(value))
-  let keyList = localStorage.getItem('uni-storage-keys')
+  let keyList = localStorage.getItem('c-storage-keys')
   if (!keyList) {
-    localStorage.setItem('uni-storage-keys', JSON.stringify([key]))
+    localStorage.setItem('c-storage-keys', JSON.stringify([key]))
   } else {
     let keys = JSON.parse(keyList)
     if (keys.indexOf(key) < 0) {
       keys.push(key)
-      localStorage.setItem('uni-storage-keys', JSON.stringify(keys))
+      localStorage.setItem('c-storage-keys', JSON.stringify(keys))
     }
   }
   return {
@@ -47,12 +47,12 @@ export function getStorageSync (key) {
 export function removeStorage ({
   key
 } = {}) {
-  let keyList = localStorage.getItem('uni-storage-keys')
+  let keyList = localStorage.getItem('c-storage-keys')
   if (keyList) {
     let keys = JSON.parse(keyList)
     let index = keys.indexOf(key)
     keys.splice(index, 1)
-    localStorage.setItem('uni-storage-keys', JSON.stringify(keys))
+    localStorage.setItem('c-storage-keys', JSON.stringify(keys))
   }
   localStorage.removeItem(key)
   return {
@@ -75,7 +75,7 @@ export function clearStorageSync () {
 }
 
 export function getStorageInfo () { // TODO 暂时先不做大小的转换
-  let keyList = localStorage.getItem('uni-storage-keys')
+  let keyList = localStorage.getItem('c-storage-keys')
   return keyList ? {
     keys: JSON.parse(keyList),
     currentSize: 0,

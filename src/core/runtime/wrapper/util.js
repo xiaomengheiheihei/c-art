@@ -82,8 +82,8 @@ export function getBehaviors (vueOptions) {
   const behaviors = []
   if (Array.isArray(vueBehaviors)) {
     vueBehaviors.forEach(behavior => {
-      behaviors.push(behavior.replace('uni://', `${__PLATFORM_PREFIX__}://`))
-      if (behavior === 'uni://form-field') {
+      behaviors.push(behavior.replace('c://', `${__PLATFORM_PREFIX__}://`))
+      if (behavior === 'c://form-field') {
         if (Array.isArray(vueProps)) {
           vueProps.push('name')
           vueProps.push('value')

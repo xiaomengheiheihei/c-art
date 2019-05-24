@@ -278,7 +278,7 @@ export default {
     _upx2px (val) {
       if (/\d+[ur]px$/i.test(val)) {
         val.replace(/\d+[ur]px$/i, text => {
-          return `${uni.upx2px(parseFloat(text))}px`
+          return `${c.upx2px(parseFloat(text))}px`
         })
       }
       return val || ''

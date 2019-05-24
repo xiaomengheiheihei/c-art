@@ -1,17 +1,17 @@
 <template>
-  <div class="uni-async-loading">
-    <i class="uni-loading" />
+  <div class="c-async-loading">
+    <i class="c-loading" />
   </div>
 </template>
 <style>
-	.uni-async-loading {
+	.c-async-loading {
     box-sizing: border-box;
 		width: 100%;
 		padding: 50px;
 		text-align: center;
 	}
 
-	.uni-async-loading .uni-loading {
+	.c-async-loading .c-loading {
 		width: 30px;
 		height: 30px;
 	}

@@ -22,7 +22,7 @@ const passiveOptions = supportsPassive ? {
 } : false
 
 function updateCssVar (vm) {
-  if (uni.canIUse('css.var')) {
+  if (c.canIUse('css.var')) {
     const pageVm = vm.$parent.$parent
     const windowTop = pageVm.showNavigationBar && pageVm.navigationBar.type !== 'transparent' ? (NAVBAR_HEIGHT + 'px')
       : '0px'

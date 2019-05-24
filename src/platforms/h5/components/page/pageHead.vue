@@ -366,7 +366,7 @@ export default {
               fontFamily = `font${Date.now()}`
               fonts[fontSrc] = fontFamily
               const cssText = `@font-face{font-family: "${fontFamily}";src: url("${fontSrc}") format("truetype")}`
-              appendCss(cssText, 'uni-btn-font-' + fontFamily)
+              appendCss(cssText, 'c-btn-font-' + fontFamily)
             }
             btn.fontFamily = fontFamily
           }
@@ -407,11 +407,11 @@ export default {
   methods: {
     _back () {
       if (getCurrentPages().length === 1) {
-        uni.reLaunch({
+        c.reLaunch({
           url: '/'
         })
       } else {
-        uni.navigateBack({
+        c.navigateBack({
           from: 'backButton'
         })
       }

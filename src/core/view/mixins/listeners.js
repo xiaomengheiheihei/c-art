@@ -32,20 +32,20 @@ export default {
       }
       Object.keys(listeners).forEach(name => {
         if (watch) { // watch id
-          if (name.indexOf('@') !== 0 && name.indexOf('uni-') !== 0) {
+          if (name.indexOf('@') !== 0 && name.indexOf('c-') !== 0) {
             /* eslint-disable standard/computed-property-even-spacing */
-            UniViewJSBridge.on(`uni-${name}-${this.$page.id}-${id}`, this[listeners[name]])
+            UniViewJSBridge.on(`c-${name}-${this.$page.id}-${id}`, this[listeners[name]])
           }
         } else {
           if (name.indexOf('@') === 0) {
             /* eslint-disable standard/computed-property-even-spacing */
-            this.$on(`uni-${name.substr(1)}`, this[listeners[name]])
-          } else if (name.indexOf('uni-') === 0) { // 完全限定
+            this.$on(`c-${name.substr(1)}`, this[listeners[name]])
+          } else if (name.indexOf('c-') === 0) { // 完全限定
             /* eslint-disable standard/computed-property-even-spacing */
             UniViewJSBridge.on(name, this[listeners[name]])
           } else if (id) { // scoped
             /* eslint-disable standard/computed-property-even-spacing */
-            UniViewJSBridge.on(`uni-${name}-${this.$page.id}-${id}`, this[listeners[name]])
+            UniViewJSBridge.on(`c-${name}-${this.$page.id}-${id}`, this[listeners[name]])
           }
         }
       })
@@ -62,20 +62,20 @@ export default {
       }
       Object.keys(listeners).forEach(name => {
         if (watch) { // watch id
-          if (name.indexOf('@') !== 0 && name.indexOf('uni-') !== 0) {
+          if (name.indexOf('@') !== 0 && name.indexOf('c-') !== 0) {
             /* eslint-disable standard/computed-property-even-spacing */
-            UniViewJSBridge.off(`uni-${name}-${this.$page.id}-${id}`, this[listeners[name]])
+            UniViewJSBridge.off(`c-${name}-${this.$page.id}-${id}`, this[listeners[name]])
           }
         } else {
           if (name.indexOf('@') === 0) {
             /* eslint-disable standard/computed-property-even-spacing */
-            this.$off(`uni-${name.substr(1)}`, this[listeners[name]])
-          } else if (name.indexOf('uni-') === 0) { // 完全限定
+            this.$off(`c-${name.substr(1)}`, this[listeners[name]])
+          } else if (name.indexOf('c-') === 0) { // 完全限定
             /* eslint-disable standard/computed-property-even-spacing */
             UniViewJSBridge.off(name, this[listeners[name]])
           } else if (id) { // scoped
             /* eslint-disable standard/computed-property-even-spacing */
-            UniViewJSBridge.off(`uni-${name}-${this.$page.id}-${id}`, this[listeners[name]])
+            UniViewJSBridge.off(`c-${name}-${this.$page.id}-${id}`, this[listeners[name]])
           }
         }
       })

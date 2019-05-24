@@ -1,5 +1,5 @@
 <template>
-  <uni-video
+  <c-video
     :id="id"
     :src="src"
     :initial-time="initialTime"
@@ -27,9 +27,9 @@
   >
     <div
       ref="container"
-      :class="{'uni-video-type-fullscreen':fullscreen,'uni-video-type-rotate-left':rotateType==='left','uni-video-type-rotate-right':rotateType==='right'}"
+      :class="{'c-video-type-fullscreen':fullscreen,'c-video-type-rotate-left':rotateType==='left','c-video-type-rotate-right':rotateType==='right'}"
       :style="{width:fullscreen?width:'100%',height:fullscreen?height:'100%'}"
-      class="uni-video-container"
+      class="c-video-container"
       @click="triggerControls"
       @touchstart="touchstart($event)"
       @touchend="touchend($event)"
@@ -45,51 +45,51 @@
         :x5-video-player-type="x5VideoPlayerType"
         :x5-video-player-fullscreen="x5VideoPlayerFullscren"
         :x5-video-orientation="x5VideoOrientation"
-        class="uni-video-video"
+        class="c-video-video"
         webkit-playsinline
         playsinline
       />
       <div
         v-show="controlsShow"
-        class="uni-video-bar uni-video-bar-full"
+        class="c-video-bar c-video-bar-full"
         @click.stop>
-        <div class="uni-video-controls">
+        <div class="c-video-controls">
           <div
             v-show="showPlayBtn"
-            :class="{'uni-video-control-button-play':!playing,'uni-video-control-button-pause':playing}"
-            class="uni-video-control-button"
+            :class="{'c-video-control-button-play':!playing,'c-video-control-button-pause':playing}"
+            class="c-video-control-button"
             @click.stop="trigger"
           />
-          <div class="uni-video-current-time">{{ currentTime|getTime }}</div>
+          <div class="c-video-current-time">{{ currentTime|getTime }}</div>
           <div
             ref="progress"
-            class="uni-video-progress-container"
+            class="c-video-progress-container"
             @click.stop="clickProgress($event)"
           >
-            <div class="uni-video-progress">
+            <div class="c-video-progress">
               <div
                 :style="{width:buffered*100+'%'}"
-                class="uni-video-progress-buffered"/>
+                class="c-video-progress-buffered"/>
               <div
                 ref="ball"
                 :style="{left:progress+'%'}"
-                class="uni-video-ball">
-                <div class="uni-video-inner"/>
+                class="c-video-ball">
+                <div class="c-video-inner"/>
               </div>
             </div>
           </div>
-          <div class="uni-video-duration">{{ (duration||durationTime)|getTime }}</div>
+          <div class="c-video-duration">{{ (duration||durationTime)|getTime }}</div>
         </div>
         <div
           v-if="danmuBtn"
-          :class="{'uni-video-danmu-button-active':enableDanmuSync}"
-          class="uni-video-danmu-button"
+          :class="{'c-video-danmu-button-active':enableDanmuSync}"
+          class="c-video-danmu-button"
           @click.stop="triggerDanmu"
         >弹幕</div>
         <div
           v-show="showFullscreenBtn"
-          :class="{'uni-video-type-fullscreen':fullscreen}"
-          class="uni-video-fullscreen"
+          :class="{'c-video-type-fullscreen':fullscreen}"
+          class="c-video-fullscreen"
           @click.stop="triggerFullscreen"
         />
       </div>
@@ -97,22 +97,22 @@
         v-show="start&&enableDanmuSync"
         ref="danmu"
         style="z-index: 0;"
-        class="uni-video-danmu"/>
+        class="c-video-danmu"/>
       <div
         v-if="!start"
-        class="uni-video-cover"
+        class="c-video-cover"
         @click.stop>
         <div
-          class="uni-video-cover-play-button"
+          class="c-video-cover-play-button"
           @click.stop="play"/>
-        <p class="uni-video-cover-duration">{{ (duration||durationTime)|getTime }}</p>
+        <p class="c-video-cover-duration">{{ (duration||durationTime)|getTime }}</p>
       </div>
       <div
-        :class="{'uni-video-toast-volume':gestureType==='volume'}"
-        class="uni-video-toast">
-        <div class="uni-video-toast-title">音量</div>
+        :class="{'c-video-toast-volume':gestureType==='volume'}"
+        class="c-video-toast">
+        <div class="c-video-toast-title">音量</div>
         <svg
-          class="uni-video-toast-icon"
+          class="c-video-toast-icon"
           width="200px"
           height="200px"
           viewBox="0 0 1024 1024"
@@ -123,24 +123,24 @@
             d="M475.400704 201.19552l0 621.674496q0 14.856192-10.856448 25.71264t-25.71264 10.856448-25.71264-10.856448l-190.273536-190.273536-149.704704 0q-14.856192 0-25.71264-10.856448t-10.856448-25.71264l0-219.414528q0-14.856192 10.856448-25.71264t25.71264-10.856448l149.704704 0 190.273536-190.273536q10.856448-10.856448 25.71264-10.856448t25.71264 10.856448 10.856448 25.71264zm219.414528 310.837248q0 43.425792-24.28416 80.851968t-64.2816 53.425152q-5.71392 2.85696-14.2848 2.85696-14.856192 0-25.71264-10.570752t-10.856448-25.998336q0-11.999232 6.856704-20.284416t16.570368-14.2848 19.427328-13.142016 16.570368-20.284416 6.856704-32.569344-6.856704-32.569344-16.570368-20.284416-19.427328-13.142016-16.570368-14.2848-6.856704-20.284416q0-15.427584 10.856448-25.998336t25.71264-10.570752q8.57088 0 14.2848 2.85696 39.99744 15.427584 64.2816 53.139456t24.28416 81.137664zm146.276352 0q0 87.422976-48.56832 161.41824t-128.5632 107.707392q-7.428096 2.85696-14.2848 2.85696-15.427584 0-26.284032-10.856448t-10.856448-25.71264q0-22.284288 22.284288-33.712128 31.997952-16.570368 43.425792-25.141248 42.283008-30.855168 65.995776-77.423616t23.712768-99.136512-23.712768-99.136512-65.995776-77.423616q-11.42784-8.57088-43.425792-25.141248-22.284288-11.42784-22.284288-33.712128 0-14.856192 10.856448-25.71264t25.71264-10.856448q7.428096 0 14.856192 2.85696 79.99488 33.712128 128.5632 107.707392t48.56832 161.41824zm146.276352 0q0 131.42016-72.566784 241.41312t-193.130496 161.989632q-7.428096 2.85696-14.856192 2.85696-14.856192 0-25.71264-10.856448t-10.856448-25.71264q0-20.570112 22.284288-33.712128 3.999744-2.285568 12.85632-5.999616t12.85632-5.999616q26.284032-14.2848 46.854144-29.140992 70.281216-51.996672 109.707264-129.705984t39.426048-165.132288-39.426048-165.132288-109.707264-129.705984q-20.570112-14.856192-46.854144-29.140992-3.999744-2.285568-12.85632-5.999616t-12.85632-5.999616q-22.284288-13.142016-22.284288-33.712128 0-14.856192 10.856448-25.71264t25.71264-10.856448q7.428096 0 14.856192 2.85696 120.563712 51.996672 193.130496 161.989632t72.566784 241.41312z"
           />
         </svg>
-        <div class="uni-video-toast-value">
+        <div class="c-video-toast-value">
           <div
             :style="{width:volumeNew*100+'%'}"
-            class="uni-video-toast-value-content">
-            <div class="uni-video-toast-volume-grids">
+            class="c-video-toast-value-content">
+            <div class="c-video-toast-volume-grids">
               <div
                 v-for="(item,index) in 10"
                 :key="index"
-                class="uni-video-toast-volume-grids-item"
+                class="c-video-toast-volume-grids-item"
               />
             </div>
           </div>
         </div>
       </div>
       <div
-        :class="{'uni-video-toast-progress':gestureType=='progress'}"
-        class="uni-video-toast">
-        <div class="uni-video-toast-title">{{ currentTimeNew|getTime }} / {{ durationTime|getTime }}</div>
+        :class="{'c-video-toast-progress':gestureType=='progress'}"
+        class="c-video-toast">
+        <div class="c-video-toast-title">{{ currentTimeNew|getTime }} / {{ durationTime|getTime }}</div>
       </div>
     </div>
     <div
@@ -148,7 +148,7 @@
     >
       <slot/>
     </div>
-  </uni-video>
+  </c-video>
 </template>
 <script>
 import {
@@ -638,7 +638,7 @@ export default {
     },
     playDanmu (danmu) {
       var p = document.createElement('p')
-      p.className = 'uni-video-danmu-item'
+      p.className = 'c-video-danmu-item'
       p.innerText = danmu.text
       var style = `bottom: ${Math.random() * 100}%;color: ${danmu.color};`
       p.setAttribute('style', style)
@@ -810,7 +810,7 @@ export default {
 </script>
 
 <style>
-uni-video {
+c-video {
   width: 300px;
   height: 225px;
   display: inline-block;
@@ -819,11 +819,11 @@ uni-video {
   position: relative;
 }
 
-uni-video[hidden] {
+c-video[hidden] {
   display: none;
 }
 
-.uni-video-container {
+.c-video-container {
   width: 100%;
   height: 100%;
   background-color: black;
@@ -835,7 +835,7 @@ uni-video[hidden] {
   object-position: inherit;
 }
 
-.uni-video-container.uni-video-type-fullscreen {
+.c-video-container.c-video-type-fullscreen {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -843,21 +843,21 @@ uni-video[hidden] {
   z-index: 999;
 }
 
-.uni-video-container.uni-video-type-fullscreen.uni-video-type-rotate-left {
+.c-video-container.c-video-type-fullscreen.c-video-type-rotate-left {
   transform: translate(-50%, -50%) rotate(-90deg);
 }
 
-.uni-video-container.uni-video-type-fullscreen.uni-video-type-rotate-right {
+.c-video-container.c-video-type-fullscreen.c-video-type-rotate-right {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.uni-video-video {
+.c-video-video {
   width: 100%;
   height: 100%;
   object-position: inherit;
 }
 
-.uni-video-cover {
+.c-video-cover {
   position: absolute;
   top: 0;
   left: 0;
@@ -871,7 +871,7 @@ uni-video[hidden] {
   z-index: 1;
 }
 
-.uni-video-cover-play-button {
+.c-video-cover-play-button {
   width: 40px;
   height: 40px;
   background-size: 50%;
@@ -879,14 +879,14 @@ uni-video[hidden] {
   background-position: 50% 50%;
 }
 
-.uni-video-cover-duration {
+.c-video-cover-duration {
   color: #fff;
   font-size: 16px;
   line-height: 1;
   margin-top: 10px;
 }
 
-.uni-video-bar {
+.c-video-bar {
   height: 44px;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
@@ -901,11 +901,11 @@ uni-video[hidden] {
   z-index: 0;
 }
 
-.uni-video-bar.uni-video-bar-full {
+.c-video-bar.c-video-bar-full {
   left: 0;
 }
 
-.uni-video-controls {
+.c-video-controls {
   display: flex;
   display: flex;
   flex-grow: 1;
@@ -913,7 +913,7 @@ uni-video[hidden] {
   margin: 0 8.5px;
 }
 
-.uni-video-control-button {
+.c-video-control-button {
   width: 13px;
   height: 15px;
   padding: 14.5px 12.5px 14.5px 12.5px;
@@ -921,7 +921,7 @@ uni-video[hidden] {
   box-sizing: content-box;
 }
 
-.uni-video-control-button::after {
+.c-video-control-button::after {
   content: "";
   display: block;
   width: 100%;
@@ -931,17 +931,17 @@ uni-video[hidden] {
   background-repeat: no-repeat;
 }
 
-.uni-video-control-button.uni-video-control-button-play::after,
-.uni-video-cover-play-button {
+.c-video-control-button.c-video-control-button-play::after,
+.c-video-cover-play-button {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAeCAYAAAAy2w7YAAAAAXNSR0IArs4c6QAAAWhJREFUSA1j+P///0cgBoHjQGzCQCsAtgJB/AMy5wCxGNXtQ9iBwvoA5BUCMQvVLEQxHpNzDSjkRhXLMM3GKrIeKKpEkYVYjcUu+AMo3ALE3GRZiN1MvKKPgbIRJFuG10j8koeA0gZEW4jfLIKyf4EqpgOxMEELCRpFnIJ3QGU5QMyM00LizCFa1SWgSkeslhFtBGkKVwGVy6FYSJp+klR/A6quB2JOkIWMIK0oNlOf8xBoZDE9LAI7nYn6HsBq4l96WHQEaLUpAyiOaASeAM2NgvuPBpaACt82IEYtfKls0UagecpwXyAzqGTRdaA57sjmYrAptAjUsCkGYlYMg9EFyLQI1IiZB8Ti6Obh5JNh0QmgHlOcBuKSIMGi50C18UDMiMssvOJEWPQLqKYbiHnxGkRIkoBF24DyaoTMIEoeh0W3geI+RBlArCI0iz4D+RVAzEasfqLVAQ19AcSg5LoYiKWI1kiiQgCMBLnEEcfDSgAAAABJRU5ErkJggg==");
 }
 
-.uni-video-control-button.uni-video-control-button-pause::after {
+.c-video-control-button.c-video-control-button-pause::after {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAgCAYAAAAffCjxAAAAAXNSR0IArs4c6QAAAFlJREFUSA3tksEKACAIQ7X//5zq98wOgQayum8QaGweHhMzG/6OujzKAymn+0LMqivu1XznWmX8/echTIyMyAgTwA72iIwwAexgj8gIE8CO3aMRbDPMaEy5BRGaKcZv8YxRAAAAAElFTkSuQmCC");
 }
 
-.uni-video-current-time,
-.uni-video-duration {
+.c-video-current-time,
+.c-video-duration {
   height: 14.5px;
   line-height: 14.5px;
   margin-top: 15px;
@@ -950,20 +950,20 @@ uni-video[hidden] {
   color: #cbcbcb;
 }
 
-.uni-video-progress-container {
+.c-video-progress-container {
   flex-grow: 2;
   flex-grow: 2;
   position: relative;
 }
 
-.uni-video-progress {
+.c-video-progress {
   height: 2px;
   margin: 21px 12px;
   background-color: rgba(255, 255, 255, 0.4);
   position: relative;
 }
 
-.uni-video-progress-buffered {
+.c-video-progress-buffered {
   position: absolute;
   left: 0;
   top: 0;
@@ -973,7 +973,7 @@ uni-video[hidden] {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-.uni-video-ball {
+.c-video-ball {
   width: 16px;
   height: 16px;
   padding: 14px;
@@ -984,14 +984,14 @@ uni-video[hidden] {
   margin-left: -22px;
 }
 
-.uni-video-inner {
+.c-video-inner {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
   border-radius: 50%;
 }
 
-.uni-video-danmu-button {
+.c-video-danmu-button {
   white-space: nowrap;
   line-height: 1;
   padding: 2px 10px;
@@ -1002,12 +1002,12 @@ uni-video[hidden] {
   margin: 0 8.5px;
 }
 
-.uni-video-danmu-button.uni-video-danmu-button-active {
+.c-video-danmu-button.c-video-danmu-button-active {
   border-color: #48c23d;
   color: #48c23d;
 }
 
-.uni-video-fullscreen {
+.c-video-fullscreen {
   width: 17px;
   height: 17px;
   padding: 8.5px;
@@ -1018,11 +1018,11 @@ uni-video[hidden] {
   background-repeat: no-repeat;
 }
 
-.uni-video-fullscreen.uni-video-type-fullscreen {
+.c-video-fullscreen.c-video-type-fullscreen {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAABBElEQVRYhcXWwQ3CMAwF0O+qOzAKQzAAl0pMxQQwQhmGKwcERxbgc4lEVdHUbm3zJR8qJemTo6YByS3JO8kjyQbGkHQpkOz4zcmK8YQ0BWDCkOxL+UDKombMYKwfZAkmDGLFhEIsmHCIFpMC0WDSIHOYVEgNkw6pYPIhE5j/QCoYF0g7eEkPYGej+cX82x/l6aIAIOb9CcrajrjFE/IAQGP1IgIRcYVsVs32+vx+nC9nWq6dAZDhOaPHBEDGh54O4w0pa9oxEZBFmCjIBGb6Qh4JMWGiIWpMBkSFyYLMYjIhNUw7N9GQi2aQiLxJHspjV+rl1hFrRp25uV2MRGQRBsAewPUD/HhJVOOuCzwAAAAASUVORK5CYII=");
 }
 
-.uni-video-danmu {
+.c-video-danmu {
   position: absolute;
   top: 0;
   left: 0;
@@ -1035,7 +1035,7 @@ uni-video[hidden] {
   overflow: visible;
 }
 
-.uni-video-danmu-item {
+.c-video-danmu-item {
   line-height: 1;
   position: absolute;
   color: #ffffff;
@@ -1047,7 +1047,7 @@ uni-video[hidden] {
   transition-timing-function: linear;
 }
 
-.uni-video-toast {
+.c-video-toast {
   pointer-events: none;
   position: absolute;
   left: 50%;
@@ -1059,13 +1059,13 @@ uni-video[hidden] {
   display: none;
 }
 
-.uni-video-toast.uni-video-toast-volume {
+.c-video-toast.c-video-toast-volume {
   width: 100px;
   height: 100px;
   display: block;
 }
 
-.uni-video-toast-volume .uni-video-toast-title {
+.c-video-toast-volume .c-video-toast-title {
   width: 100%;
   font-size: 12px;
   line-height: 16px;
@@ -1074,7 +1074,7 @@ uni-video[hidden] {
   display: block;
 }
 
-.uni-video-toast-volume .uni-video-toast-icon {
+.c-video-toast-volume .c-video-toast-icon {
   fill: #000000;
   width: 50%;
   height: 50%;
@@ -1082,36 +1082,36 @@ uni-video[hidden] {
   display: block;
 }
 
-.uni-video-toast-volume .uni-video-toast-value {
+.c-video-toast-volume .c-video-toast-value {
   width: 80px;
   height: 5px;
   margin-top: 5px;
   margin-left: 10px;
 }
 
-.uni-video-toast-volume
-  .uni-video-toast-value
-  > .uni-video-toast-value-content {
+.c-video-toast-volume
+  .c-video-toast-value
+  > .c-video-toast-value-content {
   overflow: hidden;
 }
 
-.uni-video-toast-volume-grids {
+.c-video-toast-volume-grids {
   width: 80px;
   height: 5px;
 }
 
-.uni-video-toast-volume-grids-item {
+.c-video-toast-volume-grids-item {
   float: left;
   width: 7.1px;
   height: 5px;
   background-color: #000000;
 }
 
-.uni-video-toast-volume-grids-item:not(:first-child) {
+.c-video-toast-volume-grids-item:not(:first-child) {
   margin-left: 1px;
 }
 
-.uni-video-toast.uni-video-toast-progress {
+.c-video-toast.c-video-toast-progress {
   display: block;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
