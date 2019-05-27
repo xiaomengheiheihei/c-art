@@ -22,7 +22,7 @@ config.resolve.alias = {
   'uni-shared': resolve('src/shared'),
   'uni-mixins': resolve('src/core/view/mixins'),
   'uni-helpers': resolve('src/core/helpers'),
-  'uni-platform': resolve('src/platforms/' + process.env.UNI_PLATFORM),
+  'uni-platform': resolve('src/platforms/' + process.env.C_PLATFORM),
   'uni-components': resolve('src/core/view/components')
 }
 
@@ -37,7 +37,7 @@ if (isEslintLoader) {
 config.plugins = config.plugins.concat([
   new webpack.DefinePlugin({
     __VERSION__: JSON.stringify(pkg.version),
-    __PLATFORM__: JSON.stringify(process.env.UNI_PLATFORM)
+    __PLATFORM__: JSON.stringify(process.env.C_PLATFORM)
   }),
   new webpack.ProvidePlugin({
     'console': [resolve('src/core/helpers/console'), 'default'],

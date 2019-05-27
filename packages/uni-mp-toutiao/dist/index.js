@@ -40,7 +40,7 @@ const camelize = cached((str) => {
   return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '')
 });
 
-const SYNC_API_RE = /subNVue|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$/;
+const SYNC_API_RE = /subNVue|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
 
 const CONTEXT_API_RE = /^create|Manager$/;
 
@@ -89,15 +89,17 @@ function promisify (name, api) {
         fail: reject
       }), ...params);
       /* eslint-disable no-extend-native */
-      Promise.prototype.finally = function (callback) {
-        const promise = this.constructor;
-        return this.then(
-          value => promise.resolve(callback()).then(() => value),
-          reason => promise.resolve(callback()).then(() => {
-            throw reason
-          })
-        )
-      };
+      if (!Promise.prototype.finally) {
+        Promise.prototype.finally = function (callback) {
+          const promise = this.constructor;
+          return this.then(
+            value => promise.resolve(callback()).then(() => value),
+            reason => promise.resolve(callback()).then(() => {
+              throw reason
+            })
+          )
+        };
+      }
     }))
   }
 }
@@ -658,8 +660,8 @@ function getBehaviors (vueOptions) {
   const behaviors = [];
   if (Array.isArray(vueBehaviors)) {
     vueBehaviors.forEach(behavior => {
-      behaviors.push(behavior.replace('uni://', `${"tt"}://`));
-      if (behavior === 'uni://form-field') {
+      behaviors.push(behavior.replace('c://', `${"tt"}://`));
+      if (behavior === 'c://form-field') {
         if (Array.isArray(vueProps)) {
           vueProps.push('name');
           vueProps.push('value');
@@ -1205,10 +1207,10 @@ canIUses.forEach(canIUseApi => {
   }
 });
 
-let uni = {};
+let c = {};
 
 if (typeof Proxy !== 'undefined') {
-  uni = new Proxy({}, {
+  c = new Proxy({}, {
     get (target, name) {
       if (name === 'upx2px') {
         return upx2px
@@ -1231,29 +1233,29 @@ if (typeof Proxy !== 'undefined') {
     }
   });
 } else {
-  uni.upx2px = upx2px;
+  c.upx2px = upx2px;
 
   {
     Object.keys(todoApis).forEach(name => {
-      uni[name] = promisify(name, todoApis[name]);
+      c[name] = promisify(name, todoApis[name]);
     });
     Object.keys(extraApi).forEach(name => {
-      uni[name] = promisify(name, todoApis[name]);
+      c[name] = promisify(name, todoApis[name]);
     });
   }
 
   Object.keys(api).forEach(name => {
-    uni[name] = promisify(name, api[name]);
+    c[name] = promisify(name, api[name]);
   });
 
   Object.keys(tt).forEach(name => {
     if (hasOwn(tt, name) || hasOwn(protocols, name)) {
-      uni[name] = promisify(name, wrapper(name, tt[name]));
+      c[name] = promisify(name, wrapper(name, tt[name]));
     }
   });
 }
 
-var uni$1 = uni;
+var c$1 = c;
 
-export default uni$1;
+export default c$1;
 export { createApp, createPage, createComponent };

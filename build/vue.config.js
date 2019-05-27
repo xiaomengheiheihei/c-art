@@ -8,7 +8,7 @@ const webpackConfig = require('./webpack.config.js')
 
 module.exports = {
   publicPath: '/',
-  outputDir: resolve('./packages/uni-' + process.env.UNI_PLATFORM + '/dist'),
+  outputDir: resolve('./packages/uni-' + process.env.C_PLATFORM + '/dist'),
   lintOnSave: true, // or error
   runtimeCompiler: false,
   transpileDependencies: [],
@@ -21,7 +21,7 @@ module.exports = {
       .rule('eslint')
       .include
       .add(resolve('src'))
-      .add(resolve('lib/' + process.env.UNI_PLATFORM))
+      .add(resolve('lib/' + process.env.C_PLATFORM))
       .end()
       .use('eslint-loader')
       .loader(resolve('node_modules/eslint-loader'))

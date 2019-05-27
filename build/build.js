@@ -10,10 +10,10 @@ const service = new Service(process.env.VUE_CLI_CONTEXT || process.cwd(), {
 
 service.run('build', {
   name: 'index',
-  watch: process.env.UNI_WATCH === 'true',
+  watch: process.env.C_WATCH === 'true',
   target: 'lib',
-  formats: process.env.UNI_WATCH === 'true' ? 'umd' : 'umd-min',
-  entry: './lib/' + process.env.UNI_PLATFORM + '/main.js'
+  formats: process.env.C_WATCH === 'true' ? 'umd' : 'umd-min',
+  entry: './lib/' + process.env.C_PLATFORM + '/main.js'
 }).catch(err => {
   error(err)
   process.exit(1)

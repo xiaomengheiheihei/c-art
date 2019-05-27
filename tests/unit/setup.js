@@ -25,7 +25,7 @@ glob.sync('../../src/core/view/components/**/*/index.vue', {
 	global.COMPONENTS.push(path.basename(path.dirname(file)))
 })
 
-glob.sync('../../src/platforms/' + process.env.UNI_PLATFORM + '/view/components/**/*/index.vue', {
+glob.sync('../../src/platforms/' + process.env.C_PLATFORM + '/view/components/**/*/index.vue', {
 	nodir: true,
 	cwd: __dirname
 }).forEach(file => {

@@ -996,8 +996,8 @@ function getBehaviors (vueOptions) {
   const behaviors = [];
   if (Array.isArray(vueBehaviors)) {
     vueBehaviors.forEach(behavior => {
-      behaviors.push(behavior.replace('uni://', `${"my"}://`));
-      if (behavior === 'uni://form-field') {
+      behaviors.push(behavior.replace('c://', `${"my"}://`));
+      if (behavior === 'c://form-field') {
         if (Array.isArray(vueProps)) {
           vueProps.push('name');
           vueProps.push('value');
@@ -1561,10 +1561,10 @@ canIUses.forEach(canIUseApi => {
   }
 });
 
-let uni = {};
+let c = {};
 
 if (typeof Proxy !== 'undefined') {
-  uni = new Proxy({}, {
+  c = new Proxy({}, {
     get (target, name) {
       if (name === 'upx2px') {
         return upx2px
@@ -1587,29 +1587,29 @@ if (typeof Proxy !== 'undefined') {
     }
   });
 } else {
-  uni.upx2px = upx2px;
+  c.upx2px = upx2px;
 
   {
     Object.keys(todoApis).forEach(name => {
-      uni[name] = promisify(name, todoApis[name]);
+      c[name] = promisify(name, todoApis[name]);
     });
     Object.keys(extraApi).forEach(name => {
-      uni[name] = promisify(name, todoApis[name]);
+      c[name] = promisify(name, todoApis[name]);
     });
   }
 
   Object.keys(api).forEach(name => {
-    uni[name] = promisify(name, api[name]);
+    c[name] = promisify(name, api[name]);
   });
 
   Object.keys(my).forEach(name => {
     if (hasOwn(my, name) || hasOwn(protocols, name)) {
-      uni[name] = promisify(name, wrapper(name, my[name]));
+      c[name] = promisify(name, wrapper(name, my[name]));
     }
   });
 }
 
-var uni$1 = uni;
+var c$1 = c;
 
-export default uni$1;
+export default c$1;
 export { createApp, createPage, createComponent };

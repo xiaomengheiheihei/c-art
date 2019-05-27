@@ -25,24 +25,24 @@ const PLATFORMS = {
   }
 }
 
-const platform = PLATFORMS[process.env.UNI_PLATFORM]
+const platform = PLATFORMS[process.env.C_PLATFORM]
 
 module.exports = {
   input: 'src/core/runtime/index.js',
   output: {
-    file: `packages/uni-${process.env.UNI_PLATFORM}/dist/index.js`,
+    file: `packages/uni-${process.env.C_PLATFORM}/dist/index.js`,
     format: 'es'
   },
   plugins: [
     alias({
       'uni-shared': path.resolve(__dirname, '../src/shared/util.js'),
-      'uni-platform': path.resolve(__dirname, '../src/platforms/' + process.env.UNI_PLATFORM)
+      'uni-platform': path.resolve(__dirname, '../src/platforms/' + process.env.C_PLATFORM)
     }),
     replace({
       __GLOBAL__: platform.prefix,
       __PLATFORM_TITLE__: platform.title,
       __PLATFORM_PREFIX__: JSON.stringify(platform.prefix),
-      __PLATFORM__: JSON.stringify(process.env.UNI_PLATFORM)
+      __PLATFORM__: JSON.stringify(process.env.C_PLATFORM)
     })
   ],
   external: ['vue']
