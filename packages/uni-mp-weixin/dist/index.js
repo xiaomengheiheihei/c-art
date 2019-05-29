@@ -1055,10 +1055,10 @@ canIUses.forEach(canIUseApi => {
   }
 });
 
-let c = {};
+let art = {};
 
 if (typeof Proxy !== 'undefined') {
-  c = new Proxy({}, {
+  art = new Proxy({}, {
     get (target, name) {
       if (name === 'upx2px') {
         return upx2px
@@ -1081,29 +1081,29 @@ if (typeof Proxy !== 'undefined') {
     }
   });
 } else {
-  c.upx2px = upx2px;
+  art.upx2px = upx2px;
 
   {
     Object.keys(todoApis).forEach(name => {
-      c[name] = promisify(name, todoApis[name]);
+      art[name] = promisify(name, todoApis[name]);
     });
     Object.keys(extraApi).forEach(name => {
-      c[name] = promisify(name, todoApis[name]);
+      art[name] = promisify(name, todoApis[name]);
     });
   }
 
   Object.keys(api).forEach(name => {
-    c[name] = promisify(name, api[name]);
+    art[name] = promisify(name, api[name]);
   });
 
   Object.keys(wx).forEach(name => {
     if (hasOwn(wx, name) || hasOwn(protocols, name)) {
-      c[name] = promisify(name, wrapper(name, wx[name]));
+      art[name] = promisify(name, wrapper(name, wx[name]));
     }
   });
 }
 
-var c$1 = c;
+var art$1 = art;
 
-export default c$1;
+export default art$1;
 export { createApp, createPage, createComponent };

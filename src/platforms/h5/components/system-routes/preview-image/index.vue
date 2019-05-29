@@ -2,19 +2,19 @@
   <div
     class="c-system-preview-image"
     @click="_click">
-    <v-c-swiper
+    <v-uni-swiper
       :current.sync="index"
       :indicator-dots="false"
       :autoplay="false"
       class="c-swiper">
-      <v-c-swiper-item
+      <v-uni-swiper-item
         v-for="(src,index) in urls"
         :key="index">
         <img
           :src="src"
           class="c-preview-image">
-      </v-c-swiper-item>
-    </v-c-swiper>
+      </v-uni-swiper-item>
+    </v-uni-swiper>
   </div>
 </template>
 

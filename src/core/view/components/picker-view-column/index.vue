@@ -153,7 +153,7 @@ export default {
           staticClass: 'c-picker-view-indicator',
           class: this.indicatorClass,
           style: this.indicatorStyle
-        }, [createElement('v-c-resize-sensor', {
+        }, [createElement('v-uni-resize-sensor', {
           attrs: {
             initial: true
           },

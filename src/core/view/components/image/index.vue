@@ -4,7 +4,7 @@
       ref="content"
       :style="modeStyle" />
     <img :src="realImagePath">
-    <v-c-resize-sensor
+    <v-uni-resize-sensor
       v-if="mode === 'widthFix'"
       ref="sensor"
       @resize="_resize" />

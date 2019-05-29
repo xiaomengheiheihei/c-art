@@ -24,7 +24,7 @@
         :class="placeholderClass"
         class="input-placeholder">{{ placeholder }}</div>
     </div>
-    <v-c-resize-sensor
+    <v-uni-resize-sensor
       ref="sensor"
       @resize="_resize" />
   </c-input>

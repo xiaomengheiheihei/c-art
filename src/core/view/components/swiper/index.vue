@@ -561,7 +561,7 @@ export default {
     var swiperItems = []
     if (this.$slots.default) {
       this.$slots.default.forEach(vnode => {
-        if (vnode.componentOptions && vnode.componentOptions.tag === 'v-c-swiper-item') {
+        if (vnode.componentOptions && vnode.componentOptions.tag === 'v-uni-swiper-item') {
           swiperItems.push(vnode)
         }
       })

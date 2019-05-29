@@ -92,7 +92,7 @@ export default {
     var items = []
     if (this.$slots.default) {
       this.$slots.default.forEach(vnode => {
-        if (vnode.componentOptions && vnode.componentOptions.tag === 'v-c-picker-view-column') {
+        if (vnode.componentOptions && vnode.componentOptions.tag === 'v-uni-picker-view-column') {
           items.push(vnode)
         }
       })
@@ -102,7 +102,7 @@ export default {
       'c-picker-view',
       {
         on: this.$listeners
-      }, [createElement('v-c-resize-sensor', {
+      }, [createElement('v-uni-resize-sensor', {
         attrs: {
           initial: true
         },

@@ -1,6 +1,6 @@
 <template>
   <c-movable-view v-on="$listeners">
-    <v-c-resize-sensor @resize="setParent"/>
+    <v-uni-resize-sensor @resize="setParent"/>
     <slot/>
   </c-movable-view>
 </template>

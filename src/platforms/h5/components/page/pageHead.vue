@@ -55,7 +55,7 @@
           :class="[`c-page-head-search-placeholder-${focus || text ? 'left' : searchInput.align}`]"
           class="c-page-head-search-placeholder"
         >{{ text || composing ? '' : searchInput.placeholder }}</div>
-        <v-c-input
+        <v-uni-input
           ref="input"
           v-model="text"
           :focus="searchInput.autoFocus"

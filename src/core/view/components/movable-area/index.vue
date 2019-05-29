@@ -133,7 +133,7 @@ export default {
     var items = []
     if (this.$slots.default) {
       this.$slots.default.forEach(vnode => {
-        if (vnode.componentOptions && vnode.componentOptions.tag === 'v-c-movable-view') {
+        if (vnode.componentOptions && vnode.componentOptions.tag === 'v-uni-movable-view') {
           items.push(vnode)
         }
       })
@@ -148,7 +148,7 @@ export default {
     })
     return createElement('c-movable-area', {
       on: $listeners
-    }, [createElement('v-c-resize-sensor', {
+    }, [createElement('v-uni-resize-sensor', {
       on: {
         resize: this._resize
       }

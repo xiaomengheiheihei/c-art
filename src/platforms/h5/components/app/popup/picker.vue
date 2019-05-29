@@ -19,11 +19,11 @@
           class="c-picker-action c-picker-action-confirm"
           @click="_change">确定</div>
       </div>
-      <v-c-picker-view
+      <v-uni-picker-view
         v-if="visible"
         :value.sync="valueArray"
         class="c-picker-content">
-        <v-c-picker-view-column
+        <v-uni-picker-view-column
           v-for="(range,index0) in rangeArray"
           :key="index0">
           <div
@@ -31,8 +31,8 @@
             :key="index"
             class="c-picker-item"
           >{{ typeof item==='object'?item[rangeKey]||'':item }}{{ units[index0]||'' }}</div>
-        </v-c-picker-view-column>
-      </v-c-picker-view>
+        </v-uni-picker-view-column>
+      </v-uni-picker-view>
       <!-- 第二种时间单位展示方式-暂时不用这种 -->
       <!-- <div v-if="cts.length" class="c-picker-cts">
         <div v-for="(item,index) in cts" :key="index">{{item}}</div>

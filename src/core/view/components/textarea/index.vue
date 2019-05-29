@@ -14,7 +14,7 @@
         <div
           v-for="(item,index) in valueCompute"
           :key="index">{{ item||'.' }}</div>
-        <v-c-resize-sensor
+        <v-uni-resize-sensor
           ref="sensor"
           @resize="_resize"/>
       </div>
