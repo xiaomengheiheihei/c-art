@@ -16,7 +16,7 @@ const oldGetTagNamespace = Vue.config.getTagNamespace
 const conflictTags = ['switch', 'image', 'text', 'view']
 
 Vue.config.getTagNamespace = function (tag) {
-  if (~conflictTags.indexOf(tag)) { // svg 部分标签名称与 uni 标签冲突
+  if (~conflictTags.indexOf(tag)) { // svg 部分标签名称与 c-art 标签冲突
     return false
   }
   return oldGetTagNamespace(tag) || false
